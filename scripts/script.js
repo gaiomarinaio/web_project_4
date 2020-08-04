@@ -1,8 +1,8 @@
 const editForm = document.querySelector('.edit-form');
-const overlay = document.querySelector('.overlay');
+const editFormBox = document.querySelector('.edit-form__box');
 const profileEditButton = document.querySelector('.profile__edit-button');
-let inputName = document.querySelector('#name');
-let inputAboutMe = document.querySelector('#aboutme');
+const inputName = document.querySelector('.edit-form__name');
+const inputAboutMe = document.querySelector('.edit-form__aboutme');
 const profileName = document.querySelector('.profile__name');
 const profileAboutMe = document.querySelector('.profile__profession');
 const editFormCloseButton = document.querySelector('.edit-form__close-button');
@@ -10,26 +10,25 @@ const elementsGridElement = document.querySelector('.elements__grid-element');
 const saveButton = document.querySelector('.edit-form__save-button');
 
 function popupEditForm() {
-    inputName.value = "";
-    inputAboutMe.value = "";
-    editForm.classList.toggle('popup');
-    overlay.classList.toggle('popup');
-    
+    editForm.classList.toggle('edit-form_opened');
     inputName.value = profileName.textContent;
     inputAboutMe.value = profileAboutMe.textContent;
 }
 
-function editFormSaveButton() {
-    editForm.classList.remove('popup');
-    overlay.classList.remove('popup');
+function popupCloseForm(e) {
+    e.preventDefault();
+    editForm.classList.toggle('edit-form_opened');
+}
 
+function editFormSaveButton(e) {
+    e.preventDefault();
     profileAboutMe.textContent = inputAboutMe.value;
-    profileName.textContent = inputName.value;    
+    profileName.textContent = inputName.value;
+    editForm.classList.toggle('edit-form_opened');
 }
 
 profileEditButton.addEventListener('click', popupEditForm);
 
-editFormCloseButton.addEventListener('click', popupEditForm);
+editFormCloseButton.addEventListener('click', popupCloseForm);
 
-saveButton.addEventListener('click', editFormSaveButton);
-
+editFormBox.addEventListener('submit', editFormSaveButton);

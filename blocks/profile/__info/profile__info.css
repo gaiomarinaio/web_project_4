@@ -1,6 +1,6 @@
 .profile__info {
     width: 90%;
-    display: flex;
+    display: inline-block;
     flex-basis: 70%;
     flex-flow: row wrap;
     align-items: baseline;
@@ -9,10 +9,11 @@
     margin: 0 0 0 30px;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 600px) {
     .profile__info {
       width: 100%;
       height: auto;
+      display: flex;
       justify-content: flex-start;
       flex-direction: column;
       margin: 10px 0 0;

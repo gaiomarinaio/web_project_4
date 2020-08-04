@@ -1,5 +1,7 @@
 .elements__grid-element {
     background-color: white;
     border-radius: 10px;
+    margin: 0 auto 0;
+    list-style: none;
     
 }

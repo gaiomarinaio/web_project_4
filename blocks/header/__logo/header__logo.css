@@ -3,7 +3,7 @@
     background-size: 173px 33px;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 400px) {
     .header__logo {
         margin-bottom: 32px;
         margin-left: 27px;

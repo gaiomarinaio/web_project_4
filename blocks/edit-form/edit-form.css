@@ -1,32 +1,25 @@
 @import url('./__close-button/edit-form__close-button.css');
-@import url('./__input/edit-form__input.css');
+@import url('./__name/edit-form__name.css');
+@import url('./__aboutme/edit-form__aboutme.css');
 @import url('./__save-button/edit-form__save-button.css');
 @import url('./__title/edit-form__title.css');
-@import url('./__save-button-text/edit-form__save-button-text.css');
+@import url('./__box/edit-form__box.css');
+@import url('./_opened/edit-form_opened.css');
 
 .edit-form {
-    width: 430px;
-    height: 330px;
-    background: white;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     display: none;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 400px) {
     .edit-form {
-        width: 70%;
-        height: auto;
-        margin: 0 auto 0;
         align-items: center;
         position: fixed;
-        transform: translate(-50%, -50%);
     }
   }

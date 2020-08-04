@@ -1,4 +1,3 @@
-@import url('./__line/header__line.css');
 @import url('./__logo/header__logo.css');
 
 .header {
@@ -6,9 +5,16 @@
     margin: 0 auto 0;
     width: 70%;
     max-width: 882px;
+    border-bottom: 1px solid #545454;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 1024px) {
+    .header {
+        padding: 45px auto 0;
+        width: 90%;
+    }
+  }
+@media (max-width: 400px) {
     .header {
         padding: 45px auto 0;
         width: 100%;

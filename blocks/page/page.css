@@ -1,9 +1,8 @@
 .page {
     background-color: #000000;
-    width: 1280px;
     margin: 0 auto 0;
     padding: 0;
-    font-family: 'Inter', 'Arial', sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
@@ -12,8 +11,3 @@
     position: relative;
 }
 
-@media (max-width: 320px) {
-    .page {
-      width: 100%;
-    }
-  }
