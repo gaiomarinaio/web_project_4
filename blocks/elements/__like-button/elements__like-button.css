@@ -1,6 +1,9 @@
 .elements__like-button {
     width: 20.76px;
     height: 18.13px;
+    background: url('../../../images/like-button.png');
+    border: none;
+    padding: 0;
 }
 
 .elements__like-button:hover {

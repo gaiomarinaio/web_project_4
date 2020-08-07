@@ -8,14 +8,15 @@
     font-size: 14px;
     line-height: 17px;
     color: #000000;
-    padding-top: 13.26px;
-    padding-bottom: 13.26px;
+    padding-bottom: 10px;
+    margin-bottom: 27px;
 }
 
 @media (max-width: 400px) {
     .edit-form__name {
        width: 90%;
        margin: 0 auto 0;
+       padding: 13px 0;
        display: block;
        justify-self: center;
     }

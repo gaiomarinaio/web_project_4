@@ -7,7 +7,7 @@
     .header__logo {
         margin-bottom: 32px;
         margin-left: 27px;
-        size: 126px 24px;
-        background-size: contain;
+        width: 126px;
+        height: 24px;
     }
   }

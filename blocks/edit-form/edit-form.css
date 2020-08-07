@@ -4,7 +4,6 @@
 @import url('./__save-button/edit-form__save-button.css');
 @import url('./__title/edit-form__title.css');
 @import url('./__box/edit-form__box.css');
-@import url('./_opened/edit-form_opened.css');
 
 .edit-form {
     display: none;

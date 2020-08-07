@@ -1,4 +1,4 @@
 .edit-form_opened {
-    display: block !important;
+    display: block;
     /* I had to add important as block doesn't show without */
 }

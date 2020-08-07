@@ -10,13 +10,12 @@ const elementsGridElement = document.querySelector('.elements__grid-element');
 const saveButton = document.querySelector('.edit-form__save-button');
 
 function popupEditForm() {
-    editForm.classList.toggle('edit-form_opened');
     inputName.value = profileName.textContent;
     inputAboutMe.value = profileAboutMe.textContent;
+    editForm.classList.toggle('edit-form_opened');
 }
 
-function popupCloseForm(e) {
-    e.preventDefault();
+function popupCloseForm() {
     editForm.classList.toggle('edit-form_opened');
 }
 
@@ -24,7 +23,7 @@ function editFormSaveButton(e) {
     e.preventDefault();
     profileAboutMe.textContent = inputAboutMe.value;
     profileName.textContent = inputName.value;
-    editForm.classList.toggle('edit-form_opened');
+    editForm.classList.remove('edit-form_opened');
 }
 
 profileEditButton.addEventListener('click', popupEditForm);
