@@ -23,7 +23,7 @@ function editFormSaveButton(e) {
     e.preventDefault();
     profileAboutMe.textContent = inputAboutMe.value;
     profileName.textContent = inputName.value;
-    editForm.classList.remove('edit-form_opened');
+    popupCloseForm();
 }
 
 profileEditButton.addEventListener('click', popupEditForm);
