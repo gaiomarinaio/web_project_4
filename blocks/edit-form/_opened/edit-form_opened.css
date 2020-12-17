@@ -1,4 +1,5 @@
 .edit-form_opened {
-    display: block;
-    /* I had to add important as block doesn't show without */
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s ease-in-out,opacity 1s ease-in-out;
 }

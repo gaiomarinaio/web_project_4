@@ -1,0 +1,7 @@
+.elements__like-button_active {
+    background: url('../../../../images/like-button-black.jpg');
+    border: none;
+    outline: none;
+    opacity: 1;
+    background-color: black;
+}

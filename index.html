@@ -27,60 +27,6 @@
 
         <section class="elements">
             <ul class="elements__block">
-                <li class="elements__grid-element">
-                    <img alt="yosemite-valley" src="./images/yosemite.png" class="elements__image">
-                    <div class="elements__caption">
-                        <h2 class="elements__text">
-                            Yosemite Valley
-                        </h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__grid-element">
-                    <img alt="lake-louise" src="./images/louise.png" class="elements__image">
-                    <div class="elements__caption">
-                        <h2 class="elements__text">
-                            Lake Louise
-                        </h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__grid-element">
-                    <img alt="bald-mountain" src="./images/bald.png" class="elements__image">
-                    <div class="elements__caption">
-                        <h2 class="elements__text">
-                            Bald Mountain
-                        </h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__grid-element">
-                    <img alt="latemar" src="./images/latemar.png" class="elements__image">
-                    <div class="elements__caption">
-                        <h2 class="elements__text">
-                            Latemar
-                        </h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__grid-element">
-                    <img alt="vanoise-national-park" src="./images/vanoise.png" class="elements__image">
-                    <div class="elements__caption">
-                        <h2 class="elements__text">
-                            Vanoise National Park
-                        </h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__grid-element">
-                    <img alt="lago-di-braies" src="./images/braies.png" class="elements__image">
-                    <div class="elements__caption">
-                        <h2 class="elements__text">
-                            Lago di Braies
-                        </h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
             </ul>
         </section>
         
@@ -103,6 +49,39 @@
             <button class="edit-form__save-button" type="submit">Save</button>
         </form>
     </div>
+
+    <div class="add-place">
+        <form class="add-place__box" method="POST" name="add-place-title-link" action="#">
+            <h3 class="add-place__title">
+                New place
+            </h3>
+            <input type="text" class="add-place__image-title" placeholder="Title" name="image-title">
+            <input type="text" class="add-place__image-link" placeholder="Image Link" name="image-link">
+            <button class="add-place__close-button" type="button"></button>
+            <button class="add-place__create-button" type="button">Create</button>
+        </form>    
+    </div>
+
+    <div class="popup-image">
+        <div class="popup-image__element">
+            <img alt="" src="" class="popup-image__image">
+            <h3 class="popup-image__title">
+            </h3>
+            <button class="popup-image__close-button" type="button"></button>
+        </div>    
+    </div>
+
+    <template class="card-template">
+        <li class="elements__grid-element">
+            <img alt="" src="" class="elements__image">
+            <div class="elements__caption">
+                <h2 class="elements__text">
+                </h2>
+                <button class="elements__like-button" type="button"></button>
+            </div>
+            <button class="elements__delete-button"></button>
+        </li>
+    </template>
 
     <script src="./scripts/script.js"></script>
 

@@ -1,11 +1,25 @@
+@import url('./_active/elements__like-button_active.css');
+
 .elements__like-button {
     width: 20.76px;
     height: 18.13px;
     background: url('../../../images/like-button.png');
     border: none;
     padding: 0;
+    outline: none;
 }
 
 .elements__like-button:hover {
     cursor: pointer;
+    opacity: .6;
+    border: none;
+    outline: none;
+}
+
+.elements__like-button:active {
+    background: url('../../../images/like-button-black.jpg');
+    border: none;
+    outline: none;
+    opacity: 1;
+    background-color: black;
 }

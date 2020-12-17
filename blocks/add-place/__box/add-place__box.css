@@ -1,0 +1,23 @@
+.add-place__box {
+    width: 430px;
+    height: 330px;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+    margin: 27% auto 27%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    z-index: 100;
+    opacity: 1;
+}
+
+@media (max-width: 400px) {
+    .add-place__box {
+        width: 70%;
+        height: auto;
+        align-items: center;
+        justify-content: space-between;
+    }
+  }

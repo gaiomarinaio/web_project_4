@@ -2,7 +2,10 @@
 
 ## Overview
 
-* Reactive page about pics across the US. You'll be able to add cards with places and names
+* Reactive page about pics across the US.
+Name and profession can be changed, but NOT avatar.
+Cards can be added, removed, and liked.
+Cards provide popup preview with fade-in/out.
 
 * Project available on GitHub [here](https://gaiomarinaio.github.io/web_project_4/)
 
