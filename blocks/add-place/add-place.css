@@ -6,7 +6,10 @@
 @import url('../add-place/__title/add-place__title.css');
 
 .add-place {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: rgba(0,0,0,.5);
     position: fixed;
     width: 100%;

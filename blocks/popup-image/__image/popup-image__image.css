@@ -1,7 +1,7 @@
 .popup-image__image {
     background: black;
     opacity: 1;
-    max-width: 75vw;
-    max-height: 75vh;
+    max-width: 100%;
+    
     z-index: 100;
 }
