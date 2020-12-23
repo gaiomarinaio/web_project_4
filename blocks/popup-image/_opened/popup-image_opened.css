@@ -1,5 +1,0 @@
-.popup-image_opened {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 1s ease-in-out,opacity 1s ease-in-out;
-}
