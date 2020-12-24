@@ -106,9 +106,7 @@ addPlaceCloseButton.addEventListener('click', toggleAddPlacePopup);
 function toggleAddPlacePopup() {
   togglePopup(addPlace);
 }
-function addPlaceCloseForm() {
-  addPlace.classList.toggle('popup_opened');
-}
+
 addPlaceBox.addEventListener('submit', ((e) => {
   e.preventDefault();
   elementsBlock.prepend(createNewCard(addPlaceImageTitle.value, addPlaceImageLink.value));
