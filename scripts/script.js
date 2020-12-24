@@ -71,7 +71,7 @@ function createNewCard(cardName, cardLink) {
     deletableElement.remove();
   });
 
-  elementsImage.addEventListener('click', openPopupImage);
+  elementsImage.addEventListener('click', () => openPopupImage(cardName, cardLink));
   return elementsGridElement;
 };
 
