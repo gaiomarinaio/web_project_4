@@ -1,4 +1,6 @@
 @import url('../popup/__form/popup__form.css');
+@import url('../popup/__input/popup__input.css');
+@import url('../popup/__save-button/popup__save-button.css');
 
 .popup {
     display: flex;
