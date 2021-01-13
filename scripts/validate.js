@@ -1,5 +1,3 @@
-//import { createNewCard } from "./script.js";
-
 settingsObject({
     formSelector: ".popup__form",
     inputSelector: ".popup__input",

@@ -140,5 +140,3 @@ editFormCloseButton.addEventListener('click', closePopupEditForm);
 editFormBox.addEventListener('submit', saveEditFormButton);
 
 enableValidation();
-
-export { createNewCard };
