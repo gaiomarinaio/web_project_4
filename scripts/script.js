@@ -141,4 +141,4 @@ editFormBox.addEventListener('submit', saveEditFormButton);
 
 enableValidation();
 
-export {};
+export { createNewCard };
