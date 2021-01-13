@@ -1,4 +1,4 @@
-settingsObject({
+const settingsObject({
     formSelector: ".popup__form",
     inputSelector: ".popup__input",
     submitButtonSelector: ".popup__save-button",
