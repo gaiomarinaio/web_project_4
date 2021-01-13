@@ -1,4 +1,4 @@
-import { createNewCard } from "./script.js";
+//import { createNewCard } from "./script.js";
 
 settingsObject({
     formSelector: ".popup__form",
