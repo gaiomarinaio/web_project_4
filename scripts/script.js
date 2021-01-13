@@ -1,27 +1,36 @@
-//general links to DOM
-const editForm = document.querySelector('.edit-form');
-const editFormBox = document.querySelector('.edit-form__box');
+import { enableValidation } from './validate.js';
+
+//profile box
 const profileEditButton = document.querySelector('.profile__edit-button');
-const inputName = document.querySelector('.edit-form__name');
-const inputAboutMe = document.querySelector('.edit-form__aboutme');
 const profileName = document.querySelector('.profile__name');
 const profileAboutMe = document.querySelector('.profile__profession');
+const profileAddButton = document.querySelector('.profile__add-button');
+
+//edit form popup
+const editForm = document.querySelector('.edit-form');
+const editFormBox = document.querySelector('.edit-form__box');
+const inputName = document.querySelector('.edit-form__name');
+const inputAboutMe = document.querySelector('.edit-form__aboutme');
 const editFormCloseButton = document.querySelector('.edit-form__close-button');
 const saveButton = document.querySelector('.edit-form__save-button');
-const elementsBlock = document.querySelector('.elements__block');
-const cardTemplate = document.querySelector('.card-template').content.querySelector('.elements__grid-element');
+
+//add image popup
 const addPlace = document.querySelector('.add-place');
 const addPlaceCloseButton = document.querySelector('.add-place__close-button');
 const addPlaceBox = document.querySelector('.add-place__box');
-const profileAddButton = document.querySelector('.profile__add-button');
 const addPlaceImageTitle = document.querySelector('.add-place__image-title');
 const addPlaceImageLink = document.querySelector('.add-place__image-link');
+
+//image grid
+const cardTemplate = document.querySelector('.card-template').content.querySelector('.elements__grid-element');
+const elementsBlock = document.querySelector('.elements__block');
+
+//image preview popups
 const popupImage = document.querySelector('.popup-image');
 const popupImageElement = popupImage.querySelector('.popup-image__element');
 const popupImageCloseButton = popupImage.querySelector('.popup-image__close-button');
 const popupImageImage = popupImage.querySelector('.popup-image__image');
 const popupImageTitle = popupImage.querySelector('.popup-image__title');
-
 
 //initial card layout
 const initialCards = [
@@ -52,7 +61,7 @@ const initialCards = [
 ];
 
 //card creating function
-function createNewCard(cardName, cardLink) {
+const createNewCard = (cardName, cardLink) => {
   const elementsGridElement = cardTemplate.cloneNode(true); //cloned with child
   const elementsImage = elementsGridElement.querySelector('.elements__image');
   const elementsText = elementsGridElement.querySelector('.elements__text');
@@ -79,19 +88,17 @@ popupImageCloseButton.addEventListener('click', () => {
   popupImage.classList.remove('popup_opened');
 });
 
-function togglePopup(popup) {
+//generic popup toggle
+const togglePopup = (popup) => {
   popup.classList.toggle('popup_opened');
 }
 
 //picture popup
-function openPopupImage(cardName, cardLink) {
+const openPopupImage = (cardName, cardLink) => {
   popupImageTitle.textContent = cardName;
   popupImageImage.src = cardLink;
-  
   togglePopup(popupImage)
-  
 };
-
 
 //load initial cards
 initialCards.forEach((properties) => {
@@ -103,7 +110,7 @@ profileAddButton.addEventListener('click', toggleAddPlacePopup);
 addPlaceCloseButton.addEventListener('click', toggleAddPlacePopup);
 
 //card add popup functions
-function toggleAddPlacePopup() {
+const toggleAddPlacePopup = () => {
   togglePopup(addPlace);
 }
 
@@ -114,25 +121,24 @@ addPlaceBox.addEventListener('submit', ((e) => {
 }));
 
 //profile popup functions
-function openPopupEditForm() {
+const openPopupEditForm = () => {
     inputName.value = profileName.textContent;
     inputAboutMe.value = profileAboutMe.textContent;
     togglePopup(editForm);
 }
-function closePopupEditForm() {
+const closePopupEditForm = () => {
   togglePopup(editForm);
 }
-function saveEditFormButton(e) {
+const saveEditFormButton = (e) => {
     e.preventDefault();
     profileAboutMe.textContent = inputAboutMe.value;
     profileName.textContent = inputName.value;
     togglePopup(editForm);
 }
-
 profileEditButton.addEventListener('click', openPopupEditForm);
 editFormCloseButton.addEventListener('click', closePopupEditForm);
 editFormBox.addEventListener('submit', saveEditFormButton);
 
-/*
+enableValidation();
 
-*/
+export {};

@@ -39,24 +39,28 @@
     </footer>
 
     <div class="popup edit-form">
-        <form class="popup__form edit-form__box" method="POST" name="edit-name-aboutme" action="#">
+        <form class="popup__form edit-form__box" method="POST" name="edit-name-aboutme" action="#" novalidate>
             <h3 class="edit-form__title">
                 Edit profile
             </h3>
-            <input type="text" class="popup__input edit-form__name" placeholder="Name" name="Name">
-            <input type="text" class="popup__input edit-form__aboutme" placeholder="About me" name="About-me">
+            <input type="text" class="popup__input edit-form__name" placeholder="Name" name="Name" minlength="2" maxlength="40" required>
+            <span class="popup__input-error" id="input_edit_form_name-error"></span>
+            <input type="text" class="popup__input edit-form__aboutme" placeholder="About me" name="About-me" minlength="2" maxlength="200" required>
+            <span class="popup__input-error" id="input_edit_form_aboutme-error"></span>
             <button class="close-button edit-form__close-button" type="button"></button>
             <button class="popup__save-button edit-form__save-button" type="submit">Save</button>
         </form>
     </div>
 
     <div class="popup add-place">
-        <form class="popup__form add-place__box" method="POST" name="add-place-title-link" action="#">
+        <form class="popup__form add-place__box" method="POST" name="add-place-title-link" action="#" novalidate>
             <h3 class="add-place__title">
                 New place
             </h3>
-            <input type="text" class="popup__input add-place__image-title" placeholder="Title" name="image-title">
-            <input type="text" class="popup__input add-place__image-link" placeholder="Image Link" name="image-link">
+            <input type="text" class="popup__input add-place__image-title" placeholder="Title" name="image-title" minlength = "2" maxlength = "30" required>
+            <span class="popup__input-error" id="input_add_place_image_title-error"></span>
+            <input type="url" class="popup__input add-place__image-link" placeholder="Image Link" name="image-link" minlength = "" maxlength = "" required>
+            <span class="popup__input-error" id="input_add_place_image_link-error" type="url"></span>
             <button class="close-button add-place__close-button" type="button"></button>
             <button class="popup__save-button add-place__create-button" type="submit">Create</button>
         </form>    
@@ -83,7 +87,8 @@
         </li>
     </template>
 
-    <script src="./scripts/script.js"></script>
+    <script type="module" src="scripts/script.js"></script>
+    <script type="module" src="scripts/validate.js"></script>
 
 </body>
 </html>
