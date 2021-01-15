@@ -1,5 +1,5 @@
 .add-place__image-title {
-    margin-bottom: 27px;
+   margin: 0;
 }
 
 @media (max-width: 400px) {

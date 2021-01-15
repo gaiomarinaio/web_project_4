@@ -22,6 +22,11 @@
     cursor: pointer;
 }
 
+.popup__save-button:disabled {
+    opacity: .8;
+    cursor: default;
+}
+
 @media (max-width: 400px) {
     .popup__save-button {
         width: 90%;
