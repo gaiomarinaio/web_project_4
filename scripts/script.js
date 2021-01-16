@@ -92,35 +92,39 @@ const closePopupWithEsc = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
     if(popupOpened) {
-      togglePopup(popupOpened);
+      closePopup(popupOpened);
     };
   }
 };
 const closePopupWithOverlayClick = () => {
-  const popup = Array.from(document.querySelectorAll('.popup'));
-  popup.forEach((popupForm) => {
-    popupForm.addEventListener('click', (evt) => {
-      if(evt.target.classList.contains('popup_opened')) {
-        togglePopup(evt.target);
+  const popups = Array.from(document.querySelectorAll('.popup'));
+  popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+        closePopup(evt.target);
+      }
+      if (evt.target.classList.contains('close-button')) {
+        closePopup(popup)
       }
     });
   });
 };
 
-popupImageCloseButton.addEventListener('click', () => {
-  popupImage.classList.remove('popup_opened');
-});
-
-//generic popup toggle
-const togglePopup = (popup) => {
-  popup.classList.toggle('popup_opened');
-};
+//generic popup toggles
+const openPopup = (popup) => {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupWithEsc);
+}
+const closePopup = (popup) => {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupWithEsc);
+}
 
 //picture popup
 const openPopupImage = (cardName, cardLink) => {
   popupImageTitle.textContent = cardName;
   popupImageImage.src = cardLink;
-  togglePopup(popupImage);
+  openPopup(popupImage);
 };
 
 //load initial cards
@@ -128,19 +132,14 @@ initialCards.forEach((properties) => {
   elementsBlock.prepend(createNewCard(properties.name, properties.link));
 });
 
-//card add popup functions
-const toggleAddPlacePopup = () => {
-  togglePopup(addPlace);
-};
-
-//card adding clickables
-profileAddButton.addEventListener('click', toggleAddPlacePopup);
-addPlaceCloseButton.addEventListener('click', toggleAddPlacePopup);
-
+//card adding listeners on popup
+profileAddButton.addEventListener('click', () => {
+  openPopup(addPlace); 
+});
 addPlaceBox.addEventListener('submit', ((evt) => {
   evt.preventDefault();
   elementsBlock.prepend(createNewCard(addPlaceImageTitle.value, addPlaceImageLink.value));
-  togglePopup(addPlace);
+  closePopup(addPlace);
   popupFormReset(addPlaceBox);
 }));
 
@@ -148,20 +147,17 @@ addPlaceBox.addEventListener('submit', ((evt) => {
 const openPopupEditForm = () => {
     inputName.value = profileName.textContent;
     inputAboutMe.value = profileAboutMe.textContent;
-    togglePopup(editForm);
+    openPopup(editForm);
     popupFormReset(editFormBox);
-};
-const closePopupEditForm = () => {
-  togglePopup(editForm);
 };
 const saveEditFormButton = (evt) => {
     evt.preventDefault();
     profileAboutMe.textContent = inputAboutMe.value;
     profileName.textContent = inputName.value;
-    togglePopup(editForm);
+    closePopup(editForm);
 };
 profileEditButton.addEventListener('click', openPopupEditForm);
-editFormCloseButton.addEventListener('click', closePopupEditForm);
+
 editFormBox.addEventListener('submit', saveEditFormButton);
 
 //forms reset content
@@ -169,8 +165,7 @@ const popupFormReset = (popupForm) => {
   popupForm.reset();
 };
 
-//closing popup listener and function
-document.addEventListener('keydown', closePopupWithEsc);
+//closing popup from overlay
 closePopupWithOverlayClick();
 
 //enable form validation
