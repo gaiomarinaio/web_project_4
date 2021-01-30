@@ -1,4 +1,5 @@
-import { enableValidation, formObject } from './validate.js';
+import { FormValidator, formObject } from './validate.js';
+import { initialCards, Card } from './card.js';
 
 //profile box
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -16,6 +17,7 @@ const inputName = document.querySelector('.edit-form__name');
 const inputAboutMe = document.querySelector('.edit-form__aboutme');
 const editFormCloseButton = document.querySelector('.edit-form__close-button');
 const saveButton = document.querySelector('.edit-form__save-button');
+const editFormValidator = new FormValidator(formObject, editForm);
 
 //add image popup
 const addPlace = document.querySelector('.add-place');
@@ -23,6 +25,7 @@ const addPlaceCloseButton = document.querySelector('.add-place__close-button');
 const addPlaceBox = document.querySelector('.add-place__box');
 const addPlaceImageTitle = document.querySelector('.add-place__image-title');
 const addPlaceImageLink = document.querySelector('.add-place__image-link');
+const addFormValidator = new FormValidator(formObject, addPlace);
 
 //image grid
 const cardTemplate = document.querySelector('.card-template').content.querySelector('.elements__grid-element');
@@ -35,58 +38,8 @@ const popupImageCloseButton = popupImage.querySelector('.popup-image__close-butt
 const popupImageImage = popupImage.querySelector('.popup-image__image');
 const popupImageTitle = popupImage.querySelector('.popup-image__title');
 
-//initial card layout
-const initialCards = [
-  {
-    name: 'Yosemite Valley',
-    link: 'https://code.s3.yandex.net/web-code/yosemite.jpg'
-  },
-  {
-    name: 'Lake Louise',
-    link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg'
-  },
-  {
-    name: 'Bald Mountains',
-    link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg'
-  },
-  {
-    name: 'Latemar',
-    link: 'https://code.s3.yandex.net/web-code/latemar.jpg'
-  },
-  {
-    name: 'Vanoise National Park',
-    link: 'https://code.s3.yandex.net/web-code/vanoise.jpg'
-  },
-  {
-    name: 'Lago di Braies',
-    link: 'https://code.s3.yandex.net/web-code/lago.jpg'
-  }
-];
 
-//card creating function
-const createNewCard = (cardName, cardLink) => {
-  const elementsGridElement = cardTemplate.cloneNode(true); //cloned with child
-  const elementsImage = elementsGridElement.querySelector('.elements__image');
-  const elementsText = elementsGridElement.querySelector('.elements__text');
-  const elementsLikeButton = elementsGridElement.querySelector('.elements__like-button');
-  const elementsDeleteButton = elementsGridElement.querySelector('.elements__delete-button');
-  //cards creation
-  elementsText.textContent = cardName;
-  elementsImage.alt = cardName;
-  elementsImage.src = cardLink;
-  
-  //card functionality
-  elementsLikeButton.addEventListener('click', () => {elementsLikeButton.classList.toggle('elements__like-button_active');
-});  
-  elementsDeleteButton.addEventListener('click', () => {
-    const deletableElement = elementsDeleteButton.closest('.elements__grid-element');
-    deletableElement.remove();
-  });
-
-  elementsImage.addEventListener('click', () => {openPopupImage(cardName, cardLink)});
-  return elementsGridElement;
-};
-
+//opening and closing functionalities
 //close popup using 'escape' key and clicking on overlay
 const closePopupWithEsc = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
@@ -109,7 +62,6 @@ const closePopupWithOverlayClick = () => {
     });
   });
 };
-
 //generic popup toggles
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
@@ -120,28 +72,27 @@ const closePopup = (popup) => {
   document.removeEventListener('keydown', closePopupWithEsc);
 }
 
-//picture popup
-const openPopupImage = (cardName, cardLink) => {
-  popupImageTitle.textContent = cardName;
-  popupImageImage.src = cardLink;
-  openPopup(popupImage);
-};
+//apply the validation to all forms
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
-//load initial cards
-initialCards.forEach((properties) => {
-  elementsBlock.prepend(createNewCard(properties.name, properties.link));
-});
+//create new cards
+addPlaceBox.addEventListener('submit', ((evt) => {
+  evt.preventDefault();
+  const newCardCreated = new Card({
+    name: addPlaceImageTitle.value,
+    link: addPlaceImageLink.value
+  }, '#card-template')
+  elementsBlock.prepend(newCardCreated.createNewCard());
+  closePopup(addPlace);
+  popupFormReset(addPlaceBox);
+}));
 
 //card adding listeners on popup
 profileAddButton.addEventListener('click', () => {
   openPopup(addPlace); 
 });
-addPlaceBox.addEventListener('submit', ((evt) => {
-  evt.preventDefault();
-  elementsBlock.prepend(createNewCard(addPlaceImageTitle.value, addPlaceImageLink.value));
-  closePopup(addPlace);
-  popupFormReset(addPlaceBox);
-}));
+
 
 //profile popup functions
 const openPopupEditForm = () => {
@@ -168,5 +119,13 @@ const popupFormReset = (popupForm) => {
 //closing popup from overlay
 closePopupWithOverlayClick();
 
-//enable form validation
-enableValidation(formObject);
+const initialCardsLoader = () => {
+  initialCards.forEach((properties) => {
+    const initialCardCreated = new Card(properties, '#card-template');
+    elementsBlock.prepend(initialCardCreated.createNewCard());
+  });
+}
+
+initialCardsLoader();
+
+export { openPopup, popupImage, popupImageImage, popupImageTitle };
