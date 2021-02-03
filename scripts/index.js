@@ -1,5 +1,5 @@
-import { FormValidator, formObject } from './validate.js';
-import { initialCards, Card } from './card.js';
+import { FormValidator, formObject } from './FormValidator.js';
+import { initialCards, Card } from './Card.js';
 
 //profile box
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -76,30 +76,36 @@ const closePopup = (popup) => {
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-//create new cards
+const createCard = (cardInfo, cardTemplate) => {
+  const card = new Card(cardInfo, cardTemplate);
+  elementsBlock.prepend(card.createNewCard());
+}
+
 addPlaceBox.addEventListener('submit', ((evt) => {
   evt.preventDefault();
-  const newCardCreated = new Card({
+  createCard({
     name: addPlaceImageTitle.value,
     link: addPlaceImageLink.value
-  }, '#card-template')
-  elementsBlock.prepend(newCardCreated.createNewCard());
+  }, '#card-template');
   closePopup(addPlace);
   popupFormReset(addPlaceBox);
 }));
 
 //card adding listeners on popup
 profileAddButton.addEventListener('click', () => {
+  addFormValidator.resetValidation();
   openPopup(addPlace); 
 });
 
 
 //profile popup functions
 const openPopupEditForm = () => {
+    
     inputName.value = profileName.textContent;
     inputAboutMe.value = profileAboutMe.textContent;
+    editFormValidator.resetValidation();
     openPopup(editForm);
-    popupFormReset(editFormBox);
+    //popupFormReset(editFormBox);
 };
 const saveEditFormButton = (evt) => {
     evt.preventDefault();
@@ -121,11 +127,9 @@ closePopupWithOverlayClick();
 
 const initialCardsLoader = () => {
   initialCards.forEach((properties) => {
-    const initialCardCreated = new Card(properties, '#card-template');
-    elementsBlock.prepend(initialCardCreated.createNewCard());
-  });
+    createCard(properties, '#card-template');
+  })
 }
-
 initialCardsLoader();
 
 export { openPopup, popupImage, popupImageImage, popupImageTitle };
